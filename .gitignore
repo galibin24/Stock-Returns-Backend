@@ -1,4 +1,5 @@
 /node_modules
 /flaskApi
-
+node_modules/
+flaskApi/
 .dev.env
