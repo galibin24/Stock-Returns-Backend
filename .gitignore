@@ -1,0 +1,4 @@
+/node_modules
+/flaskApi
+
+.dev.env

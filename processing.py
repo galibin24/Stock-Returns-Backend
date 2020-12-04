@@ -45,15 +45,6 @@ class Processor:
 
                 stock_dict[ticker].append(df_to_dict[i])
 
-            # print(recoveredDays)
-
-        # print(stock_droped)
-        # one day drop and recovery after drop
-        # get the dates for one day drop
-        # get the recovery from that dates
-        # take the date of drop
-        # compare the price-opening on day on drop with next day(for the recovery days)
-        # if stock recovered return stock
         print(stock_dict)
         pass
 
