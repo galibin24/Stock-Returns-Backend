@@ -17,11 +17,12 @@ cursor = connection.cursor()
 # cursor.execute(postgreSQL_select_Query)
 # mobile_records = cursor.fetchall()
 
-# TODO query to get data based on cap and date
-
 
 class Query:
-    def __init__(self, params):
+    def __init__(self, start_date, end_date, cap_type):
+        self.start_date = start_date
+        self.end_date = end_date
+        self.cap_type = cap_type
         pass
         # self.cap = params.cap
         # self.dates = [self.get_time_stamps(params.date)]
@@ -33,19 +34,15 @@ class Query:
     def get_data(self):
         # query = """SELECT * FROM "Mega" WHERE datetime < 1577836800
         #     and datetime > 1483228800"""
-        query = """ SELECT * FROM "Mega" 
-                    WHERE datetime < 1577836800 
-                        and datetime > 1483228800
-                        
-                        ORDER BY ticker asc, 
-                                datetime asc """
 
+        query = f'SELECT * FROM "{self.cap_type}" WHERE datetime < {self.end_date} and datetime > {self.start_date} ORDER BY ticker asc, datetime asc '
+        print(query)
         data = sqlio.read_sql_query(query, connection)
         return data
 
 
-start = time.time()
-makeQuery = Query({"cap": "hi"})
-makeQuery.get_data()
+# start = time.time()
+# makeQuery = Query({"cap": "hi"})
+# makeQuery.get_data()
 
 # print(time.time() - start)
